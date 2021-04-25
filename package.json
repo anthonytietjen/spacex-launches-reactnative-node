@@ -1,0 +1,24 @@
+{
+  "name": "spacex-launches",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm start-server\"",
+    "start-server": "npm start --prefix server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anthonytietjen/spacex-launches.git"
+  },
+  "keywords": [],
+  "author": "Anthony Tietjen",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/anthonytietjen/spacex-launches/issues"
+  },
+  "homepage": "https://github.com/anthonytietjen/spacex-launches#readme",
+  "devDependencies": {
+    "concurrently": "^6.0.2"
+  }
+}
