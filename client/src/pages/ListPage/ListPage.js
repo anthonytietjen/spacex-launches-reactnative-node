@@ -1,14 +1,38 @@
 import React from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { Row } from "../../components/Row/Row";
+
+import gql from "graphql-tag";
+import { Query, query } from "react-apollo";
+
+const LAUNCHES_QUERY = gql`
+  query LaunchesQuery {
+    launches {
+      flight_number
+      mission_name
+    }
+  }
+`;
 
 export const ListPage = () => {
   return (
     <View style={styles.container}>
       <ScrollView>
-        {[...Array(100).keys()].map((item) => (
+        <Query query={LAUNCHES_QUERY}>
+          {({ loading, error, data }) => {
+            if (loading) return <Text style={styles.text}>Loading...</Text>;
+            if (error) {
+              console.log(error);
+              return <Text style={styles.text}>Error loading data</Text>;
+            }
+            return data.launches.map((launch) => (
+              <Row key={launch.flight_number} launch={launch} />
+            ));
+          }}
+        </Query>
+        {/* {[...Array(100).keys()].map((item) => (
           <Row key={item} />
-        ))}
+        ))} */}
       </ScrollView>
     </View>
   );
@@ -17,6 +41,8 @@ export const ListPage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  text: {
     color: "#FFF",
   },
 });
