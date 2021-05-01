@@ -8,7 +8,7 @@ import {
 } from "react-native";
 
 import gql from "graphql-tag";
-import { Query, query } from "react-apollo";
+import { Query } from "react-apollo";
 
 const LAUNCHDETAILS_QUERY = gql`
   query LaunchDetailsQuery($flight_number: Int!) {

@@ -30,34 +30,32 @@ export const ListPage = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <ScrollView>
-        <Query query={LAUNCHES_QUERY}>
-          {({ loading, error, data }) => {
-            if (loading) return <ActivityIndicator style={{ margin: 50 }} />;
-            if (error) {
-              console.log(error);
-              return <Text style={styles.text}>Error loading data</Text>;
-            }
-            return (
-              <FlatList
-                data={data.launches.sort((a, b) => {
-                  if (a.launch_date_local > b.launch_date_local) return -1;
-                  if (b.launch_date_local < a.launch_date_local) return 1;
-                  return 0;
-                })}
-                keyExtractor={(launch) => launch.flight_number}
-                renderItem={({ item }) => (
-                  <Row
-                    launch={item}
-                    navigation={navigation}
-                    handleClick={handleClick}
-                  />
-                )}
-              />
-            );
-          }}
-        </Query>
-      </ScrollView>
+      <Query query={LAUNCHES_QUERY}>
+        {({ loading, error, data }) => {
+          if (loading) return <ActivityIndicator style={{ margin: 50 }} />;
+          if (error) {
+            console.log(error);
+            return <Text style={styles.text}>Error loading data</Text>;
+          }
+          return (
+            <FlatList
+              data={data.launches.sort((a, b) => {
+                if (a.launch_date_local > b.launch_date_local) return -1;
+                if (b.launch_date_local < a.launch_date_local) return 1;
+                return 0;
+              })}
+              keyExtractor={(launch) => launch.flight_number}
+              renderItem={({ item }) => (
+                <Row
+                  launch={item}
+                  navigation={navigation}
+                  handleClick={handleClick}
+                />
+              )}
+            />
+          );
+        }}
+      </Query>
     </View>
   );
 };
