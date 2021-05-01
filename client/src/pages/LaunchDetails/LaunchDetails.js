@@ -6,13 +6,12 @@ import {
   Text,
   View,
 } from "react-native";
-import { Row } from "../../components/Row/Row";
 
 import gql from "graphql-tag";
 import { Query, query } from "react-apollo";
 
-const LAUNCHES_QUERY = gql`
-  query LaunchesQuery {
+const LAUNCHDETAILS_QUERY = gql`
+  query LaunchDetailsQuery {
     launches {
       flight_number
       mission_name
@@ -22,11 +21,13 @@ const LAUNCHES_QUERY = gql`
   }
 `;
 
-export const LaunchDetails = ({ navigation }) => {
+export const LaunchDetails = ({ route }) => {
+  const { launch } = route.params;
+
   return (
     <View style={styles.container}>
       <ScrollView>
-        <Query query={LAUNCHES_QUERY}>
+        <Query query={LAUNCHDETAILS_QUERY}>
           {({ loading, error, data }) => {
             if (loading) return <ActivityIndicator style={{ margin: 50 }} />;
             if (error) {
@@ -35,7 +36,9 @@ export const LaunchDetails = ({ navigation }) => {
             }
             return (
               <View>
-                <Text style={styles.text}>Details</Text>
+                <Text style={styles.text}>{launch.mission_name}</Text>
+                <Text style={styles.text}>{launch.flight_number}</Text>
+                <Text style={styles.text}>{launch.launch_date_local}</Text>
               </View>
             );
           }}
@@ -49,6 +52,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#000",
+    padding: 20,
   },
   text: {
     color: "#FFF",
