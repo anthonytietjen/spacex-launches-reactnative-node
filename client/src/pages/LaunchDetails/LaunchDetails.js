@@ -35,7 +35,7 @@ export const LaunchDetails = ({ navigation }) => {
             }
             return (
               <View>
-                <Text>{Details}</Text>
+                <Text style={styles.text}>Details</Text>
               </View>
             );
           }}
