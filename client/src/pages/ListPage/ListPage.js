@@ -25,7 +25,7 @@ const LAUNCHES_QUERY = gql`
 
 export const ListPage = ({ navigation }) => {
   const handleClick = (launch) => {
-    navigation.navigate("LaunchDetails");
+    navigation.navigate("LaunchDetails", { launch });
   };
 
   return (
@@ -40,7 +40,11 @@ export const ListPage = ({ navigation }) => {
             }
             return (
               <FlatList
-                data={data.launches}
+                data={data.launches.sort((a, b) => {
+                  if (a.launch_date_local > b.launch_date_local) return -1;
+                  if (b.launch_date_local < a.launch_date_local) return 1;
+                  return 0;
+                })}
                 keyExtractor={(launch) => launch.flight_number}
                 renderItem={({ item }) => (
                   <Row
