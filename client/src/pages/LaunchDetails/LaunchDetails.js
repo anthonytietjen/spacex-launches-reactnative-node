@@ -1,7 +1,6 @@
 import React from "react";
 import {
   ActivityIndicator,
-  FlatList,
   ScrollView,
   StyleSheet,
   Text,
@@ -10,7 +9,7 @@ import {
 import { Row } from "../../components/Row/Row";
 
 import gql from "graphql-tag";
-import { Query } from "react-apollo";
+import { Query, query } from "react-apollo";
 
 const LAUNCHES_QUERY = gql`
   query LaunchesQuery {
@@ -23,11 +22,7 @@ const LAUNCHES_QUERY = gql`
   }
 `;
 
-export const ListPage = ({ navigation }) => {
-  const handleClick = (launch) => {
-    navigation.navigate("LaunchDetails");
-  };
-
+export const LaunchDetails = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -39,17 +34,9 @@ export const ListPage = ({ navigation }) => {
               return <Text style={styles.text}>Error loading data</Text>;
             }
             return (
-              <FlatList
-                data={data.launches}
-                keyExtractor={(launch) => launch.flight_number}
-                renderItem={({ item }) => (
-                  <Row
-                    launch={item}
-                    navigation={navigation}
-                    handleClick={handleClick}
-                  />
-                )}
-              />
+              <View>
+                <Text>{Details}</Text>
+              </View>
             );
           }}
         </Query>

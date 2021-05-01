@@ -7,6 +7,7 @@ import { ListPage } from "./pages/ListPage/ListPage";
 import { serverBaseUri } from "./config/config.json";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { LaunchDetails } from "./pages/LaunchDetails/LaunchDetails";
 
 const apolloClient = new ApolloClient({
   uri: `${serverBaseUri}/graphql`,
@@ -35,7 +36,7 @@ export default function App() {
           />
           <Stack.Screen
             name="LaunchDetails"
-            component={ListPage}
+            component={LaunchDetails}
             options={{ title: "Launch Details" }}
           />
         </Stack.Navigator>

@@ -17,7 +17,7 @@ const ILaunch = new GraphQLObjectType({
     mission_name: {
       type: GraphQLString,
     },
-    launch_year: {
+    launch_date_local: {
       type: GraphQLString,
     },
     launch_success: {
