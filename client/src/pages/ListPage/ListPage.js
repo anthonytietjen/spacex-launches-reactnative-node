@@ -44,7 +44,7 @@ export const ListPage = ({ navigation }) => {
                 if (b.launch_date_local < a.launch_date_local) return 1;
                 return 0;
               })}
-              keyExtractor={(launch) => launch.flight_number}
+              keyExtractor={(launch, index) => index.toString()}
               renderItem={({ item }) => (
                 <Row
                   launch={item}
