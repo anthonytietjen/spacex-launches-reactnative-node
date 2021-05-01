@@ -37,7 +37,7 @@ export default function App() {
           <Stack.Screen
             name="LaunchDetails"
             component={LaunchDetails}
-            options={{ title: "Launch Details" }}
+            options={{ title: "Details" }}
           />
         </Stack.Navigator>
       </NavigationContainer>
