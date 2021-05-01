@@ -33,11 +33,16 @@ export const Row = ({ launch, navigation, handleClick }) => {
 
 const styles = StyleSheet.create({
   container: {
-    color: "#FFF",
-    padding: 20,
+    backgroundColor: "#222",
+    padding: 15,
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
+    borderRadius: 6,
+    marginTop: 15,
+    marginLeft: 15,
+    marginRight: 15,
+    marginBottom: 0,
   },
   info: {
     display: "flex",
