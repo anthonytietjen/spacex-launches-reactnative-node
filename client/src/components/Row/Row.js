@@ -11,8 +11,10 @@ export const Row = ({ launch, navigation, handleClick }) => {
       <View style={styles.container}>
         <View style={styles.info}>
           <Text style={styles.text}>{launch.mission_name}</Text>
-          <Text style={styles.text}>{launch.flight_number}</Text>
-          <Text style={styles.text}>{launch.launch_date_local}</Text>
+          <Text style={styles.text}>Flight #: {launch.flight_number}</Text>
+          <Text style={styles.text}>
+            {new Date(launch.launch_date_local).toLocaleDateString("en-US")}
+          </Text>
         </View>
         {launch.launch_success && (
           <View style={styles.success}>
