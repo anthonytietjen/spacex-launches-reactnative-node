@@ -9,7 +9,11 @@ export const Row = ({ launch, navigation, handleClick }) => {
   return (
     <TouchableOpacity onPress={onClick}>
       <View style={styles.container}>
-        <Text style={styles.text}>{launch.mission_name}</Text>
+        <View style={styles.info}>
+          <Text style={styles.text}>{launch.mission_name}</Text>
+          <Text style={styles.text}>{launch.flight_number}</Text>
+          <Text style={styles.text}>{launch.launch_date_local}</Text>
+        </View>
         {launch.launch_success && (
           <View style={styles.success}>
             <Text>Success</Text>
@@ -32,6 +36,9 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
+  },
+  info: {
+    display: "flex",
   },
   text: {
     color: "#FFF",
