@@ -1,9 +1,9 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
-export const Row = ({ launch }) => {
+export const Row = ({ launch, navigation }) => {
   const handleClick = () => {
-    console.log({ launch });
+    navigation.navigate("LaunchDetails");
   };
 
   return (

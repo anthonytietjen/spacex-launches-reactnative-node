@@ -14,7 +14,7 @@ const LAUNCHES_QUERY = gql`
   }
 `;
 
-export const ListPage = () => {
+export const ListPage = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -26,7 +26,11 @@ export const ListPage = () => {
               return <Text style={styles.text}>Error loading data</Text>;
             }
             return data.launches.map((launch) => (
-              <Row key={launch.flight_number} launch={launch} />
+              <Row
+                key={launch.flight_number}
+                launch={launch}
+                navigation={navigation}
+              />
             ));
           }}
         </Query>
@@ -41,6 +45,7 @@ export const ListPage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#000",
   },
   text: {
     color: "#FFF",
