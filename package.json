@@ -7,8 +7,10 @@
     "node": "14.x"
   },
   "scripts": {
-    "build": "npm install -g expo-cli && npm install --prefix client && mv ./client/src/config/config.prod.json ./client/src/config/config.json && npm run build-web --prefix client && mv client/web-build public",
-    "build-local": "npm run build-web --prefix client && mv client/web-build public",
+    "build": "npm install -g expo-cli && npm install --prefix client && npm run build-local",
+    "populate-release-config": "mv ./client/src/config/config.json ./client/src/config/config.dev.json && mv ./client/src/config/config.prod.json ./client/src/config/config.json",
+    "unpopulate-release-config": "mv ./client/src/config/config.json ./client/src/config/config.prod.json && mv ./client/src/config/config.dev.json ./client/src/config/config.json",
+    "build-local": "npm run populate-release-config && npm run build-web --prefix client && npm run unpopulate-release-config && rm -rf public && mv client/web-build public",
     "start": "node server.js",
     "server": "nodemon server.js"
   },
