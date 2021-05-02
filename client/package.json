@@ -4,7 +4,9 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "web": "expo start --web",
-    "start": "react-native start"
+    "start": "react-native start",
+    "optimize": "npx expo-optimize",
+    "build-web": "expo build:web && mv ./web-build ../server/public"
   },
   "dependencies": {
     "@react-native-community/masked-view": "0.1.10",
