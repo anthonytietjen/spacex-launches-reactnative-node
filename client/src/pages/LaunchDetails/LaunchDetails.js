@@ -21,14 +21,14 @@ const LAUNCHDETAILS_QUERY = gql`
 `;
 
 export const LaunchDetails = ({ route }) => {
-  const { launch } = route.params;
+  const flight_number = parseInt(route.params.flight_number);
 
   return (
     <View style={styles.container}>
       <ScrollView>
         <Query
           query={LAUNCHDETAILS_QUERY}
-          variables={{ flight_number: launch.flight_number }}
+          variables={{ flight_number: flight_number }}
         >
           {({ loading, error, data }) => {
             if (loading) return <ActivityIndicator style={{ margin: 50 }} />;
@@ -36,6 +36,8 @@ export const LaunchDetails = ({ route }) => {
               console.log(error);
               return <Text style={styles.text}>Error loading data</Text>;
             }
+
+            const launch = data.launchDetail;
             return (
               <View>
                 <Text style={styles.text}>{launch.mission_name}</Text>

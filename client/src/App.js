@@ -15,11 +15,20 @@ const apolloClient = new ApolloClient({
 
 const Stack = createStackNavigator();
 
+const linking = {
+  config: {
+    screens: {
+      Home: "",
+      LaunchDetails: "/Details/:flight_number",
+    },
+  },
+};
+
 export default function App() {
   return (
     <ApolloProvider client={apolloClient}>
       <StatusBar style="auto" />
-      <NavigationContainer>
+      <NavigationContainer linking={linking}>
         <Stack.Navigator
           detachInactiveScreens={false}
           initialRouteName="Home"

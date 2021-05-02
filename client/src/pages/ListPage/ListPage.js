@@ -25,7 +25,9 @@ const LAUNCHES_QUERY = gql`
 
 export const ListPage = ({ navigation }) => {
   const handleClick = (launch) => {
-    navigation.navigate("LaunchDetails", { launch });
+    navigation.navigate("LaunchDetails", {
+      flight_number: launch.flight_number,
+    });
   };
 
   return (
