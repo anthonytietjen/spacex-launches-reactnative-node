@@ -7,7 +7,7 @@
     "node": "14.x"
   },
   "scripts": {
-    "build": "npm install --prefix client && npm run build-web --prefix client && mv client/web-build public",
+    "build": "npm install -g expo-cli && npm install --prefix client && npm run build-web --prefix client && mv client/web-build public",
     "start": "node server.js",
     "server": "nodemon server.js"
   },
